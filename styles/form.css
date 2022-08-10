@@ -1,0 +1,127 @@
+.form-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 35px;
+  width: 100%;
+}
+.form-title {
+  color: #767676;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+.form-input {
+  padding: 12px;
+  border: 2px solid #aaaaaa;
+  border-radius: 4px;
+}
+.form-input::placeholder {
+  color: #767676;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.form-flex{
+    display: flex;
+    width: 100%;    
+    justify-content: space-between;
+}
+.form-item-email{
+    width: 68%;
+}
+.form-item-phone{
+    width: 29%;
+}
+.form-title-birthday{
+    color: #767676;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+.form-select{
+    background-color: #ffffff;
+    /* width: 100%; */
+    margin-right: 21px;
+    padding: 11px;
+}
+.form-item-age{
+    width: 20%;    
+}
+.form-date{
+    margin-top: 15px;
+}
+
+.form-checkbox{
+    display: flex;
+    align-items: center;
+}
+.form-checkbox input{
+    width: 20px;
+    height: 20px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.form-checkbox p{
+    margin-left: 10px;
+    font-weight: 400;
+    color: #111111;
+    font-size: 16px;
+    line-height: 18px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+/* .form-input-fav{
+    position: relative;
+}
+.form-input-fav{
+    position: absolute;
+    bottom: 0;
+} */
+
+.button-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 37px;
+}
+.button-active{
+    padding: 12px 15px;
+    color: #ffffff;
+    background-color: #074EE8;
+    border: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+}
+.button-next img{
+    margin-left: 10px;
+}
+.button-finish img{
+    margin-right: 10px;
+}
+.button-more .more-right{
+    margin-left: 10px;
+}
+.button-more .more-left{
+    margin-right: 10px;
+}
+
+.button-disabled{
+    padding: 11px 13px;
+    color: #074EE8;
+    background-color:  #ffffff;
+    border: 1px solid #074EE8;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+}
+

@@ -1,0 +1,13 @@
+.container{
+    max-width: 620px;
+    padding: 55px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+}
+body{
+    background-color: #ECEEF2;
+}
+
+.hidden{
+    display: none;
+}
