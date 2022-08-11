@@ -23,7 +23,7 @@ function goToBasic(element){
 
 goToBasic(navItemBasic);
 
-let basicNextButton = document.querySelector("#basic-next-button");
+
 
 function goToSocial(element){
   element.addEventListener("click", function (event) {
@@ -33,11 +33,11 @@ function goToSocial(element){
     socialPage.classList.remove("hidden");
     navItemBasic.classList.remove("nav-item-selected");
     navItemSocial.classList.add("nav-item-selected");
+    navItemCertificates.classList.remove("nav-item-selected")
   });
 }
 
-goToSocial(basicNextButton);
-goToSocial(navItemSocial);
+
 
 let socialNextButton = document.querySelector("#social-next-button");
 

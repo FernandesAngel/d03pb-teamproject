@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/reset.css" />
-    <link rel="stylesheet" href="styles/styles.css" />
-    <link rel="stylesheet" href="styles/header.css" />
-    <link rel="stylesheet" href="styles/form.css" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="styles/reset.css"/>
+    <link rel="stylesheet" href="styles/styles.css"/>
+    <link rel="stylesheet" href="styles/header.css"/>
+    <link rel="stylesheet" href="styles/form.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
     <title>Team Project</title>
   </head>
   <body>
@@ -21,57 +26,53 @@
         </nav>
       </header>
 
-      <section id="basic">
-        <form>
+       <section id="basic">
+        <form onsubmit="validation()">
           <div class="form-item">
-            <label class="form-title" for="">Full Name *</label>
-            <input class="form-input" type="text" class="" id="" placeholder="Foo Bar"/>
+            <label class="form-title" for="input-name">Full Name *</label>
+            <input class="form-input" type="text" class="" id="input-name" placeholder="Foo Bar"/>
           </div>
           <div class="form-item">
-            <label class="form-title" for="">Nickname</label>
-            <input class="form-input" type="text" class="" id="" placeholder="Juanito"/>
+            <label class="form-title" for="input-nickname">Nickname</label>
+            <input class="form-input" type="text" class="" id="input-nickname" placeholder="Juanito"/>
           </div>
           <div class="form-flex">
             <div class="form-item form-item-email">
-              <label class="form-title" for="">Email *</label>
-              <input class="form-input" type="email" class="" id="" placeholder="foo@bar.com"/>
+              <label class="form-title" for="input-email">Email *</label>
+              <input class="form-input" type="email" id="input-email" placeholder="foo@bar.com" >
             </div>
             <div class="form-item form-item-phone">
-              <label class="form-title" for="">Phone</label>
-              <input class="form-input " type="tel" class="" id="" placeholder="(83) 00000-0000"/>
+              <label class="form-title" for="input-phone">Phone</label>
+              <input class="form-input" id="input-phone" type="tel" onkeydown="return mascaraTelefone(event)" placeholder="(83) 00000-0000"/>
             </div>
           </div>
           <div class="form-birthday">
             <label class="form-title-birthday" for="">Birthday *</label>
             <div class="form-flex form-date">
               <div class="form-item form-item-day">
-                <label class="form-title" for="">Day</label>
-                <select class="form-select form-input">
-                  <option value="1">1</option>
-                </select>
+                <label class="form-title" for="select-day">Day</label>
+                <select id="select-day" class="form-select form-input"></select>
               </div>
               <div class="form-item form-item-month">
-                <label class="form-title" for="">Month</label>
-                <select class="form-select form-input">
-                  <option value="1">1</option>
-                </select>
+                <label class="form-title" for="select-month">Month</label>
+                <select id="select-month" class="form-select form-input"></select>
               </div>
               <div class="form-item form-item-year">
-                <label class="form-title" for="">Year</label>
-                <select class="form-select form-input">
+                <label class="form-title" for="select-year">Year</label>
+                <select id="select-year" class="form-select form-input">
                   <option value="1991">1991</option>
                 </select>
               </div>
               <div class="form-item form-item-age">
-                <label class="form-title" for="">Age</label>
-                <input class="form-input " type="text" placeholder="18"/>
+                <label class="form-title" for="input-age">Age</label>
+                <input class="form-input" id="input-age" type="text" placeholder="18" disabled/>
               </div>
             </div>
           </div>
 
           <div class="form-checkbox">
-            <input type="checkbox">
-            <p>I accept the terms and privacy</p>
+            <input type="checkbox" id="input-checkbox">
+            <label for="input-checkbox">I accept the terms and privacy</label>
           </div>
 
           <div class="button-container">
@@ -86,12 +87,12 @@
       <section id="social">
          <form>
           <div class="form-item">
-            <label class="form-title" for="">Linkedin</label>
-            <input class="form-input" type="text" class="" id="" placeholder="https:/www.linkedin.com/in/foo-bar-3a0560104/"/>
+            <label class="form-title" for="input-linkedin">Linkedin</label>
+            <input class="form-input" type="text" id="input-linkedin" placeholder="https:/www.linkedin.com/in/foo-bar-3a0560104/"/>
           </div>
           <div class="form-item">
-            <label class="form-title" for="">Github *</label>
-            <input class="form-input" type="text" class="" id="" placeholder="https:/www.github.com/foobar"/>
+            <label class="form-title" for="input-git">Github *</label>
+            <input class="form-input" type="text" class="" id="input-git" placeholder="https://www.github.com/foobar" />
           </div>
           <div class="button-container">
             <button type="submit" id="social-next-button" class="button-next button-active">
@@ -104,14 +105,15 @@
 
       <section id="certificates">
         <form>
-          <div class="form-item">
-            <label class="form-title" for="">Certificates</label>
-            <input class="form-input fav-heart form-input-fav" type="text" class="" id="" placeholder="https:/www.github.com/foobar">
-              <!-- <img src="./images/fav-heart.svg" alt=""> -->
-            </input>
+          <div class="form-item form-item-flex" id="form-cert-container">
+            <label class="form-title" for="">Certificates (max: 5)</label>
+            <div class="form-fav-flex" style="display: flex; justify-content: space-between;">
+              <input class="form-input form-input-fav" type="text" placeholder="https:/www.github.com/foobar" />
+              <img class="img-fav-heart" src="./images/fav-heart.png" alt="">
+            </div>
           </div>
           <div class="button-container">
-            <button type="submit" id="certificates-more-button" class="button-more button-disabled">
+            <button type="button" id="certificates-more-button" class="button-more button-disabled" onclick="addCertificate()">
               <img src="images/plus.svg" class="more-left" alt="Right Arrow">
               More
               <img src="images/right-arrow.svg" class="more-right" alt="Right Arrow">
@@ -119,16 +121,16 @@
           </div>
 
           <div class="form-item">
-            <label class="form-title" for="">Team Name *</label>
-            <input class="form-input" type="text" class="" id="" placeholder="https:/www.linkedin.com/in/foo-bar-3a0560104/"/>
+            <label class="form-title" for="input-team">Team Name *</label>
+            <input class="form-input" type="text" id="input-team" placeholder="https:/www.linkedin.com/in/foo-bar-3a0560104/"/>
           </div>
           <div class="form-item">
-            <label class="form-title" for="">Institution *</label>
-            <input class="form-input" type="text" class="" id="" placeholder="Universidade Federal da Paraíba"/>
+            <label class="form-title" for="input-institution">Institution *</label>
+            <input class="form-input" type="text" id="input-institution" placeholder="Universidade Federal da Paraíba"/>
           </div>
           <div class="form-item">
-            <label class="form-title" for="">Graduation *</label>
-            <input class="form-input" type="text" class="" id="" placeholder="Ciências da Computação"/>
+            <label class="form-title" for="input-graduation">Graduation *</label>
+            <input class="form-input" type="text" id="input-graduation" placeholder="Ciências da Computação"/>
           </div>
 
 
@@ -138,7 +140,6 @@
               Finish
             </button>
           </div>
-
         </form>
       </section>
     </div>
@@ -146,8 +147,10 @@
 
     <!-- SCRIPTS -->
     <script src="js/navigation.js" ></script>
-    <script src="js/basicVerification.js" ></script>
-    <script src="js/socialVerification.js" ></script>
-    <script src="js/certificatesVerification.js" ></script>
+    <script src="js/formValidation.js" ></script>
+    <script src="js/manageCertificates.js" ></script>
+    <script src="js/phoneMask.js" ></script>
+    <script src="js/birthday.js" ></script>
+    <script src="js/nextButton.js" ></script>
   </body>
 </html>
