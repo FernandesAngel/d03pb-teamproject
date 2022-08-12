@@ -8,8 +8,8 @@ let navItemCertificates = document.querySelector("#nav-item-certificates");
 goToSocial(basicNextButton, basicValidationData);
 goToSocial(navItemSocial, basicValidationData);
 
-goToCertificatesEasy(navItemCertificates)
-// goToCertificates(navItemCertificates, socialValidationData);
-// goToCertificates(socialNextButton, socialValidationData);
+// goToCertificatesEasy(navItemCertificates)
+goToCertificates(navItemCertificates, socialValidationData);
+goToCertificates(socialNextButton, socialValidationData);
 
 goToSuccessPage(certificatesFinishButton, certificatesValidationData);

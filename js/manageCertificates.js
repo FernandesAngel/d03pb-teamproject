@@ -42,13 +42,15 @@ function createCertificateItem(title, position) {
   let editIcon = document.createElement("i");
   editIcon.innerHTML = "<i data-feather='edit'></i>";
   edit.appendChild(editIcon);
+  edit.onclick = editItem
 
   let deleteE = document.createElement("a");
   deleteE.classList.add("img-delete-item");
-  deleteE.setAttribute("id", "deleteIcon");
+  deleteE.setAttribute("id", "delete-icon");
   let deleteIcon = document.createElement("i");
   deleteIcon.innerHTML = "<i data-feather='trash'></i>";
   deleteE.appendChild(deleteIcon);
+  deleteE.onclick = removeItem
 
   div.appendChild(input);
   div.appendChild(heart);
@@ -61,55 +63,40 @@ function createCertificateItem(title, position) {
 }
 
 let moreButton = document.querySelector("#certificates-more-button");
-let newItem = "";
+let cont = 0;
+let certificateItems = [];
 moreButton.addEventListener("click", function (event) {
   let inputCertificates = document.querySelector("#form-input-certificates");
-  if (inputCertificates.value.length > 0) {
-    newItem = createCertificateItem(inputCertificates.value);
-    displayCertificateItems(newItem)
+  if (inputCertificates.value.length > 0 && cont < 5) {
+    createCertificateItem(inputCertificates.value);
+    certificateItems.push(inputCertificates.value);
     inputCertificates.value = "";
+    cont++;
   }
 });
 
-let certificateitems = [];
-let cont = 0;
-function displayCertificateItems(item) {
-  while (cont < 5 ){
-    certificateitems.push(item);
-    // cont++;
-  }
-  console.log(certificateitems)
+
+function removeItem() {
+  let inputvalue = this.parentNode.firstChild.value;
+  let index = certificateItems.indexOf(inputvalue);
+  certificateItems.splice(index, 1)
+  this.parentNode.remove();
+  cont--;
 }
 
+function editItem() {
+  let input = this.parentNode.firstChild;
+  let index = certificateItems.indexOf(input.value);
+  input.disabled = false;
+  input.focus()
+  input.addEventListener('keypress', function (event) {
+    if(event.key === 'Enter'){
+      certificateItems.splice(index, 1, input.value);
+      input.disabled = true;
+    }
+  })
+}
 
-// Makeli's code
-// let max_certs = 5;
-// let x = 1;
-
-//   event.preventDefault();
-//   if (x <= max_certs) {
-//     x++;
-//     let textfield = document.createElement("div");
-//     textfield.innerHTML =
-//       "<div style='display: flex; margin-top: 10px'> <input type='text' class='form-input-fav fav-heart form-input' name='certificates[]' disabled /> <image src='./images/fav-heart.png' class='img-fav-heart'/> <input class='form-input' type='button' value='-' style='flex: 1' onClick='removeCertificate(this)'> </div>";
-//     document.getElementById("form-cert-container").appendChild(textfield);
-//   } else {
-//     alert("Maximum number of certificates reached");
-//   }
-// });
-
-// function addCertificate() {
-//   if (x < max_certs ) {
-//     x++;
-//     let textfield = document.createElement('div');
-//     textfield.innerHTML = "<div style='display: flex; margin-top: 10px'> <input type='text' class='form-input-fav fav-heart form-input' name='certificates[]' disabled /> <image src='./images/fav-heart.png' class='img-fav-heart' /> <input class='form-input' type='button' value='-' style='flex: 1' onClick='removeCertificate(this)'> </div>";
-//     document.getElementById('form-cert-container').appendChild(textfield);
-//   }else{
-//     alert('Maximum number of certificates reached');
-//   }
-// }
-
-function removeCertificate(btn) {
-  btn.parentNode.remove();
-  x--;
+function getCertificatesItems(){
+  return certificateItems;
 }

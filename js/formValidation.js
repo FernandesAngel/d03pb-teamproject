@@ -201,6 +201,7 @@ function certificatesValidationData() {
   let data = false;
   if ((teamState, institutionState, graduationState)) {
     data = {
+      certificates: getCertificatesItems(),
       team: teamState,
       institution: institutionState,
       graduation: graduationState

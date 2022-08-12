@@ -20,7 +20,7 @@ function addInfo(){
     infoContainer.appendChild(createInfoItem("GitHub: " + socialData.git))
 
     let certificatesData = getCertificatesStorage();
-    //certificates
+    infoContainer.appendChild(createInfoItem("Certificates: " + certificatesData.certificates))
     infoContainer.appendChild(createInfoItem("Team name: " + certificatesData.team))
     infoContainer.appendChild(createInfoItem("Institution: " + certificatesData.institution))
     infoContainer.appendChild(createInfoItem("Graduation: " + certificatesData.graduation))
