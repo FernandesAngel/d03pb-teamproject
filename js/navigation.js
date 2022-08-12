@@ -9,7 +9,6 @@ certificatesPage.classList.add("hidden");
 successPage.classList.add("hidden");
 basicPage.classList.remove("hidden");
 
-
 function goToBasic(element) {
   element.addEventListener("click", function (event) {
     event.preventDefault();
@@ -29,24 +28,37 @@ goToBasic(navItemBasic);
 function goToSocial(element, validationData) {
   element.addEventListener("click", function (event) {
     event.preventDefault();
+    let ageInputx = document.querySelector("#input-age");
+    let errorMessage = document.querySelector("#age-input-error-message");
+    let inputAgeLabel = document.querySelector(
+      "label[for=" + ageInputx.id + "]"
+    );
     let data = validationData();
-    if (data) {
-      //salvar no storage
-      saveBasicStorage(data);
-      // navegação
-      basicPage.classList.add("hidden");
-      certificatesPage.classList.add("hidden");
-      successPage.classList.add("hidden");
-      socialPage.classList.remove("hidden");
-      navItemBasic.classList.remove("nav-item-selected");
-      navItemSocial.classList.add("nav-item-selected");
-      navItemCertificates.classList.remove("nav-item-selected");
+    if (ageInputx.value === "") {
+      inputAgeLabel.classList.add("form-label-wrong");
+      errorMessage.textContent = "You need to fill your birthday date!";
+      ageInputx.classList.add("form-input-wrong");
     } else {
-      console.log("errou tudinho basic");
+      errorMessage.textContent = "";
+      inputAgeLabel.classList.remove("form-label-wrong");
+      ageInputx.classList.remove("form-input-wrong");
+      if (data) {
+        //salvar no storage
+        saveBasicStorage(data);
+        // navegação
+        basicPage.classList.add("hidden");
+        certificatesPage.classList.add("hidden");
+        successPage.classList.add("hidden");
+        socialPage.classList.remove("hidden");
+        navItemBasic.classList.remove("nav-item-selected");
+        navItemSocial.classList.add("nav-item-selected");
+        navItemCertificates.classList.remove("nav-item-selected");
+      } else {
+        console.log("errou tudinho basic");
+      }
     }
   });
 }
-
 
 function goToCertificates(element, validationData) {
   element.addEventListener("click", function (event) {
@@ -67,7 +79,6 @@ function goToCertificates(element, validationData) {
   });
 }
 
-
 function goToSuccessPage(element, validationData) {
   element.addEventListener("click", function (event) {
     event.preventDefault();
@@ -82,13 +93,11 @@ function goToSuccessPage(element, validationData) {
       navItemBasic.classList.remove("nav-item-selected");
       navItemSocial.classList.remove("nav-item-selected");
       navItemCertificates.classList.add("nav-item-selected");
-
     } else {
       console.log("errou tudinho social");
     }
   });
 }
-
 
 function goToCertificatesEasy(element) {
   element.addEventListener("click", function (event) {

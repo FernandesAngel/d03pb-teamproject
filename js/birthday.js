@@ -17,7 +17,7 @@ for (let i = 1; i <= 12; i++) {
   selectMonth.appendChild(optionMonth);
 }
 
-for (let i = 1992; i <= 2022; i++) {
+for (let i = 1922; i <= 2022; i++) {
   let optionYear = document.createElement("option");
   optionYear.value = i;
   optionYear.textContent = i;

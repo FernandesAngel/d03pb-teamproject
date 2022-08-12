@@ -5,6 +5,9 @@ let regGit = /^((ftp|http|https):\/\/)?www\.([A-z]+)\.([A-z]{2,})/;
 let nameInput = document.querySelector("#input-name");
 let emailInput = document.querySelector("#input-email");
 let ageInput = document.querySelector("#input-age");
+let formSelectDay = document.querySelector("#select-day");
+let formSelectMonth = document.querySelector("#select-month");
+let formSelectYear = document.querySelector("#select-year");
 let nicknameInput = document.querySelector("#input-nickname");
 let phoneInput = document.querySelector("#input-phone");
 
@@ -56,18 +59,20 @@ emailInput.addEventListener("input", function (event) {
 // Verificação de Idade TESTAR AINDA
 let ageState = false;
 let inputAgeLabel = document.querySelector("label[for=" + ageInput.id + "]");
-ageInput.addEventListener("onkeyup", function (event) {
-  if (this.value.length > 0 && this.value.length <= 3) {
-    console.log("bota no storage ou retorna o nome", this.value);
-    inputAgeLabel.classList.remove("form-label-wrong");
-    ageState = this.value;
-    console.log("com idadee");
-  } else {
-    inputAgeLabel.classList.add("form-label-wrong");
-    this.classList.add("form-input-wrong");
-    ageState = false;
-    console.log("sem idadee");
-  }
+function resetSelectMessage(){
+  let errorMessage = document.querySelector("#age-input-error-message");
+  errorMessage.textContent = "";
+  inputAgeLabel.classList.remove("form-label-wrong");
+  ageInput.classList.remove("form-input-wrong");
+}
+formSelectDay.addEventListener("click", function () {
+  resetSelectMessage()
+});
+formSelectMonth.addEventListener("click", function () {
+  resetSelectMessage()
+});
+formSelectYear.addEventListener("click", function () {
+  resetSelectMessage()
 });
 
 // Verificação Github
@@ -149,7 +154,6 @@ graduationInput.addEventListener("input", function (event) {
 
 //Validation dataaaaa
 function basicValidationData() {
-
   let checkboxInput = document.querySelector("#input-checkbox");
   let validatedCheckbox = checkboxInput.checked;
 
@@ -160,15 +164,13 @@ function basicValidationData() {
       nickname: nicknameInput.value,
       email: emailState,
       phone: phoneInput.value,
-      // age: ageState,
+      age: ageInput.value,
     };
   } else if (!nameState) {
     let errorMessage = document.querySelector("#name-input-error-message");
     inputNameLabel.classList.add("form-label-wrong");
     errorMessage.textContent = "You need to fill with your full name!";
     nameInput.classList.add("form-input-wrong");
-
-    data = false;
   } else if (!emailState) {
     let errorMessage = document.querySelector("#email-input-error-message");
     errorMessage.textContent = "You need to fill with a right email!";
@@ -188,7 +190,7 @@ function socialValidationData() {
       linkedin: linkedinInput.value,
     };
   } else {
-    let errorMessage = document.querySelector("#email-input-error-message");
+    let errorMessage = document.querySelector("#git-input-error-message");
     errorMessage.textContent = "You need a valid URL!";
     inputGitLabel.classList.add("form-label-wrong");
     gitInput.classList.add("form-input-wrong");
@@ -204,7 +206,7 @@ function certificatesValidationData() {
       certificates: getCertificatesItems(),
       team: teamState,
       institution: institutionState,
-      graduation: graduationState
+      graduation: graduationState,
     };
   } else if (!teamState) {
     let errorMessage = document.querySelector("#team-input-error-message");
@@ -213,13 +215,17 @@ function certificatesValidationData() {
     teamInput.classList.add("form-input-wrong");
     data = false;
   } else if (!institutionState) {
-    let errorMessage = document.querySelector("#institution-input-error-message");
+    let errorMessage = document.querySelector(
+      "#institution-input-error-message"
+    );
     errorMessage.textContent = "You need to enter a Institution!";
     institutionTeamLabel.classList.add("form-label-wrong");
     institutionInput.classList.add("form-input-wrong");
     data = false;
   } else if (!graduationState) {
-    let errorMessage = document.querySelector("#graduation-input-error-message");
+    let errorMessage = document.querySelector(
+      "#graduation-input-error-message"
+    );
     errorMessage.textContent = "You need to enter a Graduation!";
     graduationTeamLabel.classList.add("form-label-wrong");
     graduationInput.classList.add("form-input-wrong");

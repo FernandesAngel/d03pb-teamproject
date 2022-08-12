@@ -115,13 +115,14 @@
                 </select>
               </div>
               <div class="form-item form-item-age">
-                <label class="form-title" for="input-age">Age</label>
+                <label class="form-title" for="input-age" >Age</label>
                 <input
                   class="form-input"
                   id="input-age"
                   type="text"
                   placeholder="18"
                   disabled
+                  value=""
                 />
               </div>
             </div>
@@ -194,7 +195,10 @@
                 type="text"
                 placeholder="https:/www.github.com/foobar"
               />
-              <a href="#" class="img-fav-heart">
+              <a href="#" class="img-fav-heart heartIcon">
+                <i data-feather="heart"></i>
+              </a>
+              <a href="#" id="heartIcon" class="img-fav-heart heartIcon" style="display: none;">
                 <i data-feather="heart"></i>
               </a>
             </div>

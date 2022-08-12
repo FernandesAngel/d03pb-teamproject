@@ -13,7 +13,7 @@ function addInfo(){
     infoContainer.appendChild(createInfoItem("Nickname: " + basicData.nickname))
     infoContainer.appendChild(createInfoItem("Email: " + basicData.email))
     infoContainer.appendChild(createInfoItem("Phone: " + basicData.phone))
-    // infoContainer.appendChild(createInfoItem("Age: " + basicData.age))
+    infoContainer.appendChild(createInfoItem("Age: " + basicData.age))
 
     let socialData = getSocialStorage();
     infoContainer.appendChild(createInfoItem("Linkedin: " + socialData.linkedin))

@@ -148,6 +148,9 @@
   border-right: none;
   cursor: pointer;
 }
+.fav-color{
+  color: #074ee8;
+}
 .img-edit-item {
   width: 20px;
   height: 20px;
@@ -231,4 +234,22 @@ button img{
 .certificate-item{
   display: flex;
   margin-top: 10px;
+}
+
+@media screen and (max-width: 525px) {
+  .form-flex{
+    flex-direction: column;
+  }
+  .form-item-email{
+    width: 100%;
+  }
+  .form-item-age{
+    width: 100%;
+  }
+  .form-item-phone{
+    width: 100%;
+  }
+  .form-select{
+    width: 100%;
+  }
 }
