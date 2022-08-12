@@ -1,19 +1,22 @@
 let basicPage = document.querySelector("#basic");
 let socialPage = document.querySelector("#social");
 let certificatesPage = document.querySelector("#certificates");
+let successPage = document.querySelector("#success");
 let navItemBasic = document.querySelector("#nav-item-basic");
-let navItemSocial = document.querySelector("#nav-item-social");
-let navItemCertificates = document.querySelector("#nav-item-certificates");
 
 socialPage.classList.add("hidden");
 certificatesPage.classList.add("hidden");
+successPage.classList.add("hidden");
 basicPage.classList.remove("hidden");
 
-function goToBasic(element){
+
+function goToBasic(element) {
   element.addEventListener("click", function (event) {
     event.preventDefault();
+    //recuperar dados do storage
     socialPage.classList.add("hidden");
     certificatesPage.classList.add("hidden");
+    successPage.classList.add("hidden");
     basicPage.classList.remove("hidden");
     navItemBasic.classList.add("nav-item-selected");
     navItemSocial.classList.remove("nav-item-selected");
@@ -23,27 +26,74 @@ function goToBasic(element){
 
 goToBasic(navItemBasic);
 
-
-
-function goToSocial(element){
+function goToSocial(element, validationData) {
   element.addEventListener("click", function (event) {
     event.preventDefault();
-    basicPage.classList.add("hidden");
-    certificatesPage.classList.add("hidden");
-    socialPage.classList.remove("hidden");
-    navItemBasic.classList.remove("nav-item-selected");
-    navItemSocial.classList.add("nav-item-selected");
-    navItemCertificates.classList.remove("nav-item-selected")
+    let data = validationData();
+    if (data) {
+      //salvar no storage
+      saveBasicStorage(data);
+      // navegação
+      basicPage.classList.add("hidden");
+      certificatesPage.classList.add("hidden");
+      successPage.classList.add("hidden");
+      socialPage.classList.remove("hidden");
+      navItemBasic.classList.remove("nav-item-selected");
+      navItemSocial.classList.add("nav-item-selected");
+      navItemCertificates.classList.remove("nav-item-selected");
+    } else {
+      console.log("errou tudinho basic");
+    }
   });
 }
 
 
-
-let socialNextButton = document.querySelector("#social-next-button");
-
-function goToCertificates(element){
+function goToCertificates(element, validationData) {
   element.addEventListener("click", function (event) {
     event.preventDefault();
+    let data = validationData();
+    if (data) {
+      saveSocialStorage(data);
+      basicPage.classList.add("hidden");
+      socialPage.classList.add("hidden");
+      successPage.classList.add("hidden");
+      certificatesPage.classList.remove("hidden");
+      navItemBasic.classList.remove("nav-item-selected");
+      navItemSocial.classList.remove("nav-item-selected");
+      navItemCertificates.classList.add("nav-item-selected");
+    } else {
+      console.log("errou tudinho social");
+    }
+  });
+}
+
+
+function goToSuccessPage(element, validationData) {
+  element.addEventListener("click", function (event) {
+    event.preventDefault();
+    let data = validationData();
+    if (data) {
+      saveCertificatesStorage(data);
+      addInfo();
+      basicPage.classList.add("hidden");
+      socialPage.classList.add("hidden");
+      certificatesPage.classList.add("hidden");
+      successPage.classList.remove("hidden");
+      navItemBasic.classList.remove("nav-item-selected");
+      navItemSocial.classList.remove("nav-item-selected");
+      navItemCertificates.classList.add("nav-item-selected");
+
+    } else {
+      console.log("errou tudinho social");
+    }
+  });
+}
+
+
+function goToCertificatesEasy(element) {
+  element.addEventListener("click", function (event) {
+    event.preventDefault();
+
     basicPage.classList.add("hidden");
     socialPage.classList.add("hidden");
     certificatesPage.classList.remove("hidden");
@@ -52,6 +102,3 @@ function goToCertificates(element){
     navItemCertificates.classList.add("nav-item-selected");
   });
 }
-
-goToCertificates(socialNextButton);
-goToCertificates(navItemCertificates);

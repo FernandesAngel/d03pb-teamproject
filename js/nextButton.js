@@ -1,13 +1,15 @@
 let basicNextButton = document.querySelector("#basic-next-button");
-function enableBasicNext() {
-  let basicForm = basicValidation()
-  if ( !basicForm ) {
-    console.log("disable button");
-  } else {
-    console.log("enable button");
-    goToSocial(basicNextButton);
-    goToSocial(navItemSocial);
-  }
-}
+let socialNextButton = document.querySelector("#social-next-button");
+let certificatesFinishButton = document.querySelector("#certificates-finish-button");
+let navItemSocial = document.querySelector("#nav-item-social");
+let navItemCertificates = document.querySelector("#nav-item-certificates");
 
-enableBasicNext()
+
+goToSocial(basicNextButton, basicValidationData);
+goToSocial(navItemSocial, basicValidationData);
+
+goToCertificatesEasy(navItemCertificates)
+// goToCertificates(navItemCertificates, socialValidationData);
+// goToCertificates(socialNextButton, socialValidationData);
+
+goToSuccessPage(certificatesFinishButton, certificatesValidationData);
