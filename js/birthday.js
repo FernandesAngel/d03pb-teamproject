@@ -25,21 +25,10 @@ for (let i = 1922; i <= 2022; i++) {
 }
 
 let select = document.getElementById("select-year");
-// let inputAge = document.getElementById("input-age");
 
-// select.addEventListener("change", () => {
-//   let value = select.options[select.selectedIndex].value;
-//   calculateAge(value);
-// });
-
-// function calculateAge(yearBirthday) {
-//     inputAge.value = 2022 - yearBirthday;
-// }
 
 function calculateAge() {
   var now = new Date();
-//   var today = new Date(now.getYear(), now.getMonth(), now.getDate());
-//   console.log(today);
 
   var yearNow = 2022;
   var monthNow = now.getMonth() + 1;
@@ -74,8 +63,5 @@ function calculateAge() {
     months: monthAge,
     days: dateAge,
   };
-  // if (monthNow > monthDob && dayNow > dayDob) {
-  //   age.years--;
-  // }
   inputAge.value = age.years;
 }

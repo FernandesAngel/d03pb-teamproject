@@ -148,8 +148,9 @@
   border-right: none;
   cursor: pointer;
 }
-.fav-color{
-  color: #074ee8;
+.iheart-color{
+  fill: #074ee8;
+  stroke: #074ee8;
 }
 .img-edit-item {
   width: 20px;
@@ -201,21 +202,11 @@
   align-items: center;
   border-radius: 4px;
 }
-.button-next img {
-  margin-left: 10px;
-}
-.button-finish img {
-  margin-right: 10px;
-}
 .button-more .more-right {
   margin-left: 10px;
 }
 .button-more .more-left {
   margin-right: 10px;
-}
-button img{
-  width: 12px;
-  height: 12px;
 }
 
 .button-disabled {

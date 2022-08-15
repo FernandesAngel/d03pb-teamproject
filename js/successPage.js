@@ -1,8 +1,3 @@
-//get info
-//create a list with the info
-//hide the navbar
-
-//chama essa função na hora que clica no botão finish
 let infoContainer = document.querySelector("#success-user-info");
 
 let navbar = document.querySelector("#navbar");
@@ -24,8 +19,6 @@ function addInfo(){
     infoContainer.appendChild(createInfoItem("Team name: " + certificatesData.team))
     infoContainer.appendChild(createInfoItem("Institution: " + certificatesData.institution))
     infoContainer.appendChild(createInfoItem("Graduation: " + certificatesData.graduation))
-
-    console.log("basic data", getBasicStorage())
 }
 
 function createInfoItem(info){

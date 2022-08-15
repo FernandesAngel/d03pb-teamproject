@@ -1,28 +1,6 @@
-{
-  /* <div class="form-fav-flex">
-  <input
-    class="form-input form-input-fav"
-    type="text"
-    placeholder="https:/www.github.com/foobar"
-  />
-  <a href="#" class="img-fav-heart">
-    <i data-feather="heart"></i>
-  </a>
-</div>; */
-}
-
-// function createInfoItem(info) {
-//   let h6 = document.createElement("h6");
-//   h6.textContent = info;
-//   return h6;
-// }
-
-//My code
-
-function createCertificateItem(title, position) {
+function createCertificateItem(title, heartClass) {
   let div = document.createElement("div");
   div.classList.add("certificate-item");
-  div.setAttribute("position-data", position);
 
   let input = document.createElement("input");
   input.classList.add("form-input-fav-item", "fav-heart", "form-input");
@@ -32,7 +10,11 @@ function createCertificateItem(title, position) {
   let heart = document.createElement("a");
   heart.setAttribute("id", "heartIcon");
   let heartIcon = document.createElement("i");
-  heartIcon.innerHTML = "<i data-feather='heart'></i>";
+  if(heartClass){
+    heartIcon.innerHTML = "<i data-feather='heart' class='iheart-color'></i>";
+  } else {
+    heartIcon.innerHTML = "<i data-feather='heart'></i>";
+  }
   heart.appendChild(heartIcon);
   heart.classList.add("img-fav-item", "heartIcon");
   heart.onclick = onClickHeartItem;
@@ -61,6 +43,7 @@ function createCertificateItem(title, position) {
   document.getElementById("form-cert-container").appendChild(div);
 
   feather.replace();
+
 }
 
 function removeItem() {
@@ -97,8 +80,10 @@ function resetItems() {
 
 function showCertificates() {
   resetItems();
-  certificateItems.map((i) => createCertificateItem(i.name));
+  certificateItems.map((i) => createCertificateItem(i.name, i.clicked));
 }
+
+
 
 function putInFirst(arr, from, to) {
   if (arr.length > 0) {
@@ -112,9 +97,10 @@ let cont = 0;
 let certificateItems = [];
 
 moreButton.addEventListener("click", function (event) {
-  heartIconElement.classList.remove("fav-color");
   let inputCertificates = document.querySelector("#form-input-certificates");
+  let errorMessage = document.querySelector("#certificates-input-error-message");
   if (inputCertificates.value.length > 0 && cont < 5) {
+    errorMessage.textContent= "";
     if (clicked) {
       certificateItems.push({name: inputCertificates.value, clicked:true});
       let index = certificateItems.indexOf(inputCertificates.value);
@@ -130,22 +116,25 @@ moreButton.addEventListener("click", function (event) {
       inputCertificates.focus();
       cont++;
     }
+  } else{
+    errorMessage.textContent= "You reached the max. number of certificates."
   }
   resetItems();
   showCertificates();
 });
 
-let heartIconElement = document.querySelector(".heartIcon");
+let heartElement = document.querySelector("#heartIcon");
+let heartIconElement = document.querySelector("#iHeartIcon");
 let contClickTop = 1;
 let clicked = false;
-heartIconElement.addEventListener("click", function () {
+heartElement.addEventListener("click", function () {
   if (contClickTop % 2 == 0) {
-    heartIconElement.classList.remove("fav-color");
+    heartIconElement.classList.remove("iheart-color");
     clicked = false;
     console.log("nope");
   } else {
+    heartIconElement.classList.add("iheart-color");
     clicked = true;
-    heartIconElement.classList.add("fav-color");
     console.log("coração");
     console.log(certificateItems);
     resetItems();
@@ -161,6 +150,7 @@ function onClickHeartItem() {
   let objectItem = certificateItems.find(i => i.name === input.value)
   if (contClickBottom % 2 == 0) {
     objectItem.clicked = false;
+    showCertificates()
     contClickBottom++;
   } else {
     let index = certificateItems.indexOf(objectItem);
@@ -173,18 +163,11 @@ function onClickHeartItem() {
     contClickBottom++;
   }
 
-  if(objectItem.clicked){
-    let heart = this.parentNode.getElementsByTagName("a")[0];
-    heart.classList.add("fav-color");
-  } else {
-    let heart = this.parentNode.getElementsByTagName("a")[0];
-        heart.classList.remove("fav-color");
-  }
+
 }
 
 function getCertificatesItems() {
   let finalItems = [];
   certificateItems.map(i => finalItems.push(i.name));
   return finalItems
-  // return certificateItems
 }

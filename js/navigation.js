@@ -12,7 +12,6 @@ basicPage.classList.remove("hidden");
 function goToBasic(element) {
   element.addEventListener("click", function (event) {
     event.preventDefault();
-    //recuperar dados do storage
     socialPage.classList.add("hidden");
     certificatesPage.classList.add("hidden");
     successPage.classList.add("hidden");
@@ -42,10 +41,10 @@ function goToSocial(element, validationData) {
       errorMessage.textContent = "";
       inputAgeLabel.classList.remove("form-label-wrong");
       ageInputx.classList.remove("form-input-wrong");
+
       if (data) {
-        //salvar no storage
         saveBasicStorage(data);
-        // navegação
+
         basicPage.classList.add("hidden");
         certificatesPage.classList.add("hidden");
         successPage.classList.add("hidden");
@@ -53,8 +52,6 @@ function goToSocial(element, validationData) {
         navItemBasic.classList.remove("nav-item-selected");
         navItemSocial.classList.add("nav-item-selected");
         navItemCertificates.classList.remove("nav-item-selected");
-      } else {
-        console.log("errou tudinho basic");
       }
     }
   });
@@ -73,8 +70,6 @@ function goToCertificates(element, validationData) {
       navItemBasic.classList.remove("nav-item-selected");
       navItemSocial.classList.remove("nav-item-selected");
       navItemCertificates.classList.add("nav-item-selected");
-    } else {
-      console.log("errou tudinho social");
     }
   });
 }
@@ -93,8 +88,6 @@ function goToSuccessPage(element, validationData) {
       navItemBasic.classList.remove("nav-item-selected");
       navItemSocial.classList.remove("nav-item-selected");
       navItemCertificates.classList.add("nav-item-selected");
-    } else {
-      console.log("errou tudinho social");
     }
   });
 }

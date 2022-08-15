@@ -1,6 +1,6 @@
 let regName = /^(\w+ )+\w+$/;
 let regEmail = /\S+@\S+\.\S+/;
-let regGit = /^((ftp|http|https):\/\/)?www\.([A-z]+)\.([A-z]{2,})/;
+let regGit = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi
 
 let nameInput = document.querySelector("#input-name");
 let emailInput = document.querySelector("#input-email");
@@ -56,7 +56,7 @@ emailInput.addEventListener("input", function (event) {
   }
 });
 
-// Verificação de Idade TESTAR AINDA
+// Verificação de Idade
 let ageState = false;
 let inputAgeLabel = document.querySelector("label[for=" + ageInput.id + "]");
 function resetSelectMessage(){
@@ -152,7 +152,6 @@ graduationInput.addEventListener("input", function (event) {
   }
 });
 
-//Validation dataaaaa
 function basicValidationData() {
   let checkboxInput = document.querySelector("#input-checkbox");
   let validatedCheckbox = checkboxInput.checked;
