@@ -100,7 +100,6 @@ teamInput.addEventListener("input", function (event) {
   let errorMessage = document.querySelector("#team-input-error-message");
   if (this.value.length > 0) {
     errorMessage.textContent = "";
-    console.log("aaa");
     inputTeamLabel.classList.remove("form-label-wrong");
     this.classList.remove("form-input-wrong");
     teamState = this.value;

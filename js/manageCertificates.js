@@ -105,13 +105,11 @@ moreButton.addEventListener("click", function (event) {
       certificateItems.push({name: inputCertificates.value, clicked:true});
       let index = certificateItems.indexOf(inputCertificates.value);
       putInFirst(certificateItems, index, 0);
-      console.log(certificateItems);
       inputCertificates.value = "";
       inputCertificates.focus();
       cont++;
     } else {
       certificateItems.push({name: inputCertificates.value, clicked:false});
-      console.log(certificateItems);
       inputCertificates.value = "";
       inputCertificates.focus();
       cont++;
@@ -131,12 +129,9 @@ heartElement.addEventListener("click", function () {
   if (contClickTop % 2 == 0) {
     heartIconElement.classList.remove("iheart-color");
     clicked = false;
-    console.log("nope");
   } else {
     heartIconElement.classList.add("iheart-color");
     clicked = true;
-    console.log("coração");
-    console.log(certificateItems);
     resetItems();
     showCertificates();
   }
@@ -156,8 +151,6 @@ function onClickHeartItem() {
     let index = certificateItems.indexOf(objectItem);
     objectItem.clicked = true;
     putInFirst(certificateItems, index, 0);
-    console.log("coração");
-    console.log(certificateItems, objectItem.clicked);
     resetItems();
     showCertificates();
     contClickBottom++;
